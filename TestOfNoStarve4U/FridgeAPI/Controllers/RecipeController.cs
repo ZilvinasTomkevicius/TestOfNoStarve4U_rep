@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using BusinessEntities;
 using BusinessServices;
+using log4net;
 
 namespace FridgeAPI.Controllers
 {
@@ -13,21 +14,34 @@ namespace FridgeAPI.Controllers
     {
         IRecipeServices recipeServices = new RecipeServices();
 
+        private static log4net.ILog Log { get; set; }
+
+        ILog log = log4net.LogManager.GetLogger(typeof(RecipeController));
+
         /// <summary>
-        /// Method for adding recipe (json: [Name, recDescription, cookingTime]) 
+        /// Recipe.Add 
         /// </summary>
         /// <param name="recipe"></param>
         /// <returns></returns>
         [HttpPost]
         public HttpResponseMessage Add(RecipeEntity recipe)
         {
-            recipeServices.Add(recipe);
+            try
+            {
+                recipeServices.Add(recipe);
 
-            return Request.CreateResponse(HttpStatusCode.OK, recipe);
+                return Request.CreateResponse(HttpStatusCode.OK, recipe);
+            }
+            catch(Exception e)
+            {
+                log.Error(e);
+
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
+            }
         }
 
         /// <summary>
-        /// Method for updating an existing recipe (json: [ID, Name, recDescription, cookingTime])
+        /// Recipe.Update
         /// </summary>
         /// <param name="recipe"></param>
         /// <returns></returns>
@@ -42,12 +56,14 @@ namespace FridgeAPI.Controllers
             }
             catch(Exception e)
             {
+                log.Error(e);
+
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
             }
         }
 
         /// <summary>
-        /// Method for deleting an existing recipe (recipe/delete?recipeID=' ')
+        /// Recipe.Delete
         /// </summary>
         /// <param name="recipe"></param>
         /// 
@@ -60,12 +76,14 @@ namespace FridgeAPI.Controllers
             }
             catch(Exception e)
             {
+                log.Error(e);
+
                 Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
             }
         }
 
         /// <summary>
-        /// Method for getting a recipe (recipe/get?recipeID=' ')
+        /// Recipe.Get
         /// </summary>
         /// <param name="recipeID"></param>
         /// <returns></returns>
@@ -80,20 +98,32 @@ namespace FridgeAPI.Controllers
             }
             catch(Exception e)
             {
+                log.Error(e);
+
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
             }
         }
 
         /// <summary>
-        /// Method for getting a list of recipes
+        /// Recipe.GetList
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<RecipeEntity> GetList()
-        {            
+        public HttpResponseMessage GetList()
+        {
+            try
+            {
                 var recipeList = recipeServices.GetList();
 
-                return recipeList;           
+                return Request.CreateResponse(HttpStatusCode.OK, recipeList);
+            }
+            catch(Exception e)
+            {
+                log.Error(e);
+
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
+
+            }    
         }
     }
 }

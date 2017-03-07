@@ -19,8 +19,7 @@ namespace BusinessServices
         {
             this.connectionString = ClassLibrary.Properties.Settings.Default.ConnectionString;
         }
-
-        private SqlConnection conn;
+       
         private SqlDataReader reader;
 
 
@@ -32,7 +31,7 @@ namespace BusinessServices
 
                 SqlTransaction tr = con.BeginTransaction();
 
-                SqlCommand cmd = new SqlCommand("insert into Recipe (Name, recDescription, Cookingtime ) values (@Name, @Desc, @CookT)", con, tr);
+                SqlCommand cmd = new SqlCommand("insert into Recipe (Name, recDescription, cookingTime ) values (@Name, @Desc, @CookT)", con, tr);
 
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@Name", recipe.Name);
@@ -54,9 +53,11 @@ namespace BusinessServices
 
                 SqlTransaction tr = con.BeginTransaction();
 
-                SqlCommand cmd = new SqlCommand("update Recipes set RecDescription @Desc where Id = @Id;", con, tr);
+                SqlCommand cmd = new SqlCommand("update Recipe set Name = @Name, recDescription = @Desc, cookingTime = @CookT where Id = @Id", con, tr);
                 cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@Name", recipe.Name);
                 cmd.Parameters.AddWithValue("@Desc", recipe.Description);
+                cmd.Parameters.AddWithValue("@CookT", recipe.CookingTime);
                 cmd.Parameters.AddWithValue("@Id", recipe.ID);
 
                 cmd.ExecuteNonQuery();
@@ -71,7 +72,7 @@ namespace BusinessServices
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("delete from Recipe where Id = @Id", con);
+                SqlCommand cmd = new SqlCommand("delete from Recipe where Id = @ID", con);
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@ID", recipeID);
 
@@ -114,9 +115,9 @@ namespace BusinessServices
             {
                 con.Open();
 
-                List<RecipeEntity> rList = new List<RecipeEntity>();
+                List<RecipeEntity> recipeList = new List<RecipeEntity>();
 
-                SqlCommand cmd = new SqlCommand("select id, name, description, cookingtime  from Recipe", con);
+                SqlCommand cmd = new SqlCommand("select id, name, recDescription, cookingTime  from Recipe", con);
                 cmd.CommandType = CommandType.Text;
 
 
@@ -130,11 +131,12 @@ namespace BusinessServices
                     recipe.Description = reader.GetString(2);
                     recipe.CookingTime = reader.GetInt32(3);
 
+                    recipeList.Add(recipe);
                 }
 
                 reader.Close();
 
-                return rList;
+                return recipeList;
             }
         }
     }

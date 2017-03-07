@@ -19,7 +19,7 @@ namespace FridgeAPI.Controllers
         ILog log = log4net.LogManager.GetLogger(typeof(ProductController));
 
         /// <summary>
-        /// Method for adding product (json body: [ID, Name, Kind])
+        /// Product.Add
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
@@ -33,13 +33,15 @@ namespace FridgeAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch(Exception e)
-            {                                               
+            {
+                log.Error(e);    
+                                            
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
             }            
         }
 
         /// <summary>
-        /// Method for updating a product (json body: [ID, Name, Kind])
+        /// Product.Update
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
@@ -54,12 +56,14 @@ namespace FridgeAPI.Controllers
             }
             catch(Exception e)
             {
+                log.Error(e);
+
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
             }
         } 
         
         /// <summary>
-        /// Method for deleting a product (delete?productID=' ')
+        /// Product.Delete
         /// </summary>
         /// <param name="productID"></param>
         [HttpDelete]
@@ -73,20 +77,20 @@ namespace FridgeAPI.Controllers
             }
             catch(Exception e)
             {
+                log.Error(e);
+
                 Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
             }
         }    
 
         /// <summary>
-        /// Method for getting a product (get?productID=' ')
+        /// Product.Get
         /// </summary>
         /// <param name="productID"></param>
         /// <returns></returns>
         [HttpGet]
         public HttpResponseMessage Get(int productID)
-        {
-            log.Info("message!");
-            
+        {            
             try
             {
                 ProductEntity product = productServices.Get(productID);
@@ -95,13 +99,14 @@ namespace FridgeAPI.Controllers
             }
             catch(Exception e)
             {
-                log.Error(e);         
+                log.Error(e);    
+                     
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
             }
         }
         
         /// <summary>
-        /// Method for getting a list of products
+        /// Product.GetList
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -115,6 +120,8 @@ namespace FridgeAPI.Controllers
             }
             catch(Exception e)
             {
+                log.Error(e);
+
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
             }        
         }

@@ -21,7 +21,6 @@ namespace BusinessServices
             // sqlConnection.Open();
         }
 
-        private SqlConnection conn;
         private SqlDataReader reader;
 
         public void Add(ProductEntity product)
@@ -124,28 +123,32 @@ namespace BusinessServices
 
         public List<ProductEntity> GetList()
         {
-            
-            List<ProductEntity> plist = new List<ProductEntity>();
-
-            SqlCommand cmd = new SqlCommand("select id, name, kind from Product", this.conn);
-            cmd.CommandType = CommandType.Text;
-
-            reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            using (SqlConnection con = new SqlConnection(this.ConnectionString))
             {
-                ProductEntity product = new ProductEntity();
+                con.Open();
 
-                product.ID = reader.GetInt32(0);
-                product.Name = reader.GetString(1);
-                product.Kind = reader.GetString(2);
+                List<ProductEntity> productList = new List<ProductEntity>();
 
-                plist.Add(product);
+                SqlCommand cmd = new SqlCommand("select id, name, kind from Product", con);
+                cmd.CommandType = CommandType.Text;
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ProductEntity product = new ProductEntity();
+
+                    product.ID = reader.GetInt32(0);
+                    product.Name = reader.GetString(1);
+                    product.Kind = reader.GetString(2);
+
+                    productList.Add(product);
+                }
+
+                reader.Close();
+
+                return productList;
             }
-
-            reader.Close();
-
-            return (plist);
         }
 
     }

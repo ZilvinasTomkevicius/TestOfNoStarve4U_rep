@@ -483,68 +483,68 @@
         </member>
         <member name="M:FridgeAPI.Controllers.ProductController.Add(BusinessEntities.ProductEntity)">
             <summary>
-            Method for adding product (json body: [ID, Name, Kind])
+            Product.Add
             </summary>
             <param name="product"></param>
             <returns></returns>
         </member>
         <member name="M:FridgeAPI.Controllers.ProductController.Update(BusinessEntities.ProductEntity)">
             <summary>
-            Method for updating a product (json body: [ID, Name, Kind])
+            Product.Update
             </summary>
             <param name="product"></param>
             <returns></returns>
         </member>
         <member name="M:FridgeAPI.Controllers.ProductController.Delete(System.Int32)">
             <summary>
-            Method for deleting a product (delete?productID=' ')
+            Product.Delete
             </summary>
             <param name="productID"></param>
         </member>
         <member name="M:FridgeAPI.Controllers.ProductController.Get(System.Int32)">
             <summary>
-            Method for getting a product (get?productID=' ')
+            Product.Get
             </summary>
             <param name="productID"></param>
             <returns></returns>
         </member>
         <member name="M:FridgeAPI.Controllers.ProductController.GetList">
             <summary>
-            Method for getting a list of products
+            Product.GetList
             </summary>
             <returns></returns>
         </member>
         <member name="M:FridgeAPI.Controllers.RecipeController.Add(BusinessEntities.RecipeEntity)">
             <summary>
-            Method for adding recipe (json: [Name, recDescription, cookingTime]) 
+            Recipe.Add 
             </summary>
             <param name="recipe"></param>
             <returns></returns>
         </member>
         <member name="M:FridgeAPI.Controllers.RecipeController.Update(BusinessEntities.RecipeEntity)">
             <summary>
-            Method for updating an existing recipe (json: [ID, Name, recDescription, cookingTime])
+            Recipe.Update
             </summary>
             <param name="recipe"></param>
             <returns></returns>
         </member>
         <member name="M:FridgeAPI.Controllers.RecipeController.Delete(System.Int32)">
             <summary>
-            Method for deleting an existing recipe (recipe/delete?recipeID=' ')
+            Recipe.Delete
             </summary>
             <param name="recipe"></param>
             
         </member>
         <member name="M:FridgeAPI.Controllers.RecipeController.Get(System.Int32)">
             <summary>
-            Method for getting a recipe (recipe/get?recipeID=' ')
+            Recipe.Get
             </summary>
             <param name="recipeID"></param>
             <returns></returns>
         </member>
         <member name="M:FridgeAPI.Controllers.RecipeController.GetList">
             <summary>
-            Method for getting a list of recipes
+            Recipe.GetList
             </summary>
             <returns></returns>
         </member>
