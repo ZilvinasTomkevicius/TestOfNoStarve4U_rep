@@ -5,27 +5,24 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BusinessEntities;
+using BusinessServices;
 
 namespace BusinessServices
 {
     public class ProductServices : IProductServices
     {
-        private string ConnectionString;
+        private string connectionString;
 
         public ProductServices()
         {
-            this.ConnectionString = ClassLibrary.Properties.Settings.Default.ConnectionString;
-
-            // sqlConnection = new SqlConnection(connectionString);
-            // sqlConnection.Open();
+            this.connectionString = ClassLibrary.Properties.Settings.Default.ConnectionString;
         }
 
         private SqlDataReader reader;
 
         public void Add(ProductEntity product)
         {
-            using (SqlConnection con = new SqlConnection(this.ConnectionString))
+            using (SqlConnection con = new SqlConnection(this.connectionString))
             {
                 try
                 {
@@ -53,7 +50,7 @@ namespace BusinessServices
 
         public void Update(ProductEntity product)
         {
-            using (SqlConnection con = new SqlConnection(this.ConnectionString))
+            using (SqlConnection con = new SqlConnection(this.connectionString))
             {
                 try
                 {
@@ -80,7 +77,7 @@ namespace BusinessServices
 
         public void Delete(int productID)
         {
-            using (SqlConnection con = new SqlConnection(this.ConnectionString))
+            using (SqlConnection con = new SqlConnection(this.connectionString))
             {
                 con.Open();
 
@@ -95,7 +92,7 @@ namespace BusinessServices
         public ProductEntity Get(int productID)
         {
 
-            using (SqlConnection con = new SqlConnection(this.ConnectionString))
+            using (SqlConnection con = new SqlConnection(this.connectionString))
             {
                 con.Open();
 
@@ -123,7 +120,7 @@ namespace BusinessServices
 
         public List<ProductEntity> GetList()
         {
-            using (SqlConnection con = new SqlConnection(this.ConnectionString))
+            using (SqlConnection con = new SqlConnection(this.connectionString))
             {
                 con.Open();
 

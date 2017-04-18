@@ -481,14 +481,14 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
-        <member name="M:FridgeAPI.Controllers.ProductController.Add(BusinessEntities.ProductEntity)">
+        <member name="M:FridgeAPI.Controllers.ProductController.Add(BusinessServices.ProductEntity)">
             <summary>
             Product.Add
             </summary>
             <param name="product"></param>
             <returns></returns>
         </member>
-        <member name="M:FridgeAPI.Controllers.ProductController.Update(BusinessEntities.ProductEntity)">
+        <member name="M:FridgeAPI.Controllers.ProductController.Update(BusinessServices.ProductEntity)">
             <summary>
             Product.Update
             </summary>
@@ -499,13 +499,13 @@
             <summary>
             Product.Delete
             </summary>
-            <param name="productID"></param>
+            <param name="id"></param>
         </member>
         <member name="M:FridgeAPI.Controllers.ProductController.Get(System.Int32)">
             <summary>
             Product.Get
             </summary>
-            <param name="productID"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FridgeAPI.Controllers.ProductController.GetList">
@@ -514,14 +514,14 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:FridgeAPI.Controllers.RecipeController.Add(BusinessEntities.RecipeEntity)">
+        <member name="M:FridgeAPI.Controllers.RecipeController.Add(BusinessServices.RecipeEntity)">
             <summary>
             Recipe.Add 
             </summary>
             <param name="recipe"></param>
             <returns></returns>
         </member>
-        <member name="M:FridgeAPI.Controllers.RecipeController.Update(BusinessEntities.RecipeEntity)">
+        <member name="M:FridgeAPI.Controllers.RecipeController.Update(BusinessServices.RecipeEntity)">
             <summary>
             Recipe.Update
             </summary>
@@ -532,7 +532,7 @@
             <summary>
             Recipe.Delete
             </summary>
-            <param name="recipe"></param>
+            <param name="recipeID"></param>
             
         </member>
         <member name="M:FridgeAPI.Controllers.RecipeController.Get(System.Int32)">
@@ -546,6 +546,19 @@
             <summary>
             Recipe.GetList
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FridgeAPI.Controllers.RecipeMatchingController.GetMatchedRecipes">
+            <summary>
+            Matching.GetMatchedRecipes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FridgeAPI.Controllers.RecipeMatchingController.SendCheckedProducts(System.Collections.Generic.List{BusinessServices.ProductEntity})">
+            <summary>
+            Recipe.Add 
+            </summary>
+            <param name="checkedProducts"></param>
             <returns></returns>
         </member>
     </members>

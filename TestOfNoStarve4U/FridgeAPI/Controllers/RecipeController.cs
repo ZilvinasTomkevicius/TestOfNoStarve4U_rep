@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BusinessEntities;
 using BusinessServices;
 using log4net;
 
@@ -65,7 +64,7 @@ namespace FridgeAPI.Controllers
         /// <summary>
         /// Recipe.Delete
         /// </summary>
-        /// <param name="recipe"></param>
+        /// <param name="recipeID"></param>
         /// 
         [HttpDelete]
         public void Delete(int recipeID)

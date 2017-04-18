@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BusinessEntities;
 using BusinessServices;
 using log4net;
 
@@ -65,37 +64,38 @@ namespace FridgeAPI.Controllers
         /// <summary>
         /// Product.Delete
         /// </summary>
-        /// <param name="productID"></param>
+        /// <param name="id"></param>
         [HttpDelete]
-        public void Delete(int productID)
+        // s[Route("api/product/delete/{id}")]
+        public void Delete(int id)
         {
             try
             {
-                log.Info("veikia!");
+                productServices.Delete(id);
 
-                productServices.Delete(productID);
+                //return (Request.CreateResponse(HttpStatusCode.OK, "deleted"));
             }
             catch(Exception e)
             {
                 log.Error(e);
 
-                Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
+               //return Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
             }
         }    
 
         /// <summary>
         /// Product.Get
         /// </summary>
-        /// <param name="productID"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public HttpResponseMessage Get(int productID)
+        public HttpResponseMessage Get(int id)
         {            
             try
             {
-                ProductEntity product = productServices.Get(productID);
+                ProductEntity product = productServices.Get(id);
 
-                return (Request.CreateResponse(HttpStatusCode.Forbidden, product));
+                return (Request.CreateResponse(HttpStatusCode.OK, product));
             }
             catch(Exception e)
             {

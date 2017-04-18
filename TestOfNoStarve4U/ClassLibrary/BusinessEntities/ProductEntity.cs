@@ -6,12 +6,17 @@ using System.Web.DynamicData;
 using System.Globalization;
 using System.Threading.Tasks;
 
-namespace BusinessEntities
+namespace BusinessServices
 {
     public class ProductEntity
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Kind { get; set; }        
+        public string Kind { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

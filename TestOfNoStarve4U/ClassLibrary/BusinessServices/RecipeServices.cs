@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using BusinessEntities;
+using BusinessServices;
 
 namespace BusinessServices
 {
@@ -100,6 +100,7 @@ namespace BusinessServices
                     recipe.ID = reader.GetInt32(0);
                     recipe.Name = reader.GetString(1);
                     recipe.Description = reader.GetString(2);
+                    recipe.CookingTime = reader.GetInt32(3);
                 }
 
                 reader.Close();
