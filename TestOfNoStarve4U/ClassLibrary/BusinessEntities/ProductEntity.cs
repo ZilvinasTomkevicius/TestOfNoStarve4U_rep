@@ -6,7 +6,7 @@ using System.Web.DynamicData;
 using System.Globalization;
 using System.Threading.Tasks;
 
-namespace BusinessServices
+namespace BusinessEntities
 {
     public class ProductEntity
     {

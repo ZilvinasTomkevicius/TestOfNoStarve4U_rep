@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using BusinessServices;
 using log4net;
+using BusinessEntities;
 
 namespace FridgeAPI.Controllers
 {

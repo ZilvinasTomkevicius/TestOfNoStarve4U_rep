@@ -481,14 +481,14 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
-        <member name="M:FridgeAPI.Controllers.ProductController.Add(BusinessServices.ProductEntity)">
+        <member name="M:FridgeAPI.Controllers.ProductController.Add(BusinessEntities.ProductEntity)">
             <summary>
             Product.Add
             </summary>
             <param name="product"></param>
             <returns></returns>
         </member>
-        <member name="M:FridgeAPI.Controllers.ProductController.Update(BusinessServices.ProductEntity)">
+        <member name="M:FridgeAPI.Controllers.ProductController.Update(BusinessEntities.ProductEntity)">
             <summary>
             Product.Update
             </summary>
@@ -514,14 +514,14 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:FridgeAPI.Controllers.RecipeController.Add(BusinessServices.RecipeEntity)">
+        <member name="M:FridgeAPI.Controllers.RecipeController.Add(BusinessEntities.RecipeEntity)">
             <summary>
             Recipe.Add 
             </summary>
             <param name="recipe"></param>
             <returns></returns>
         </member>
-        <member name="M:FridgeAPI.Controllers.RecipeController.Update(BusinessServices.RecipeEntity)">
+        <member name="M:FridgeAPI.Controllers.RecipeController.Update(BusinessEntities.RecipeEntity)">
             <summary>
             Recipe.Update
             </summary>
@@ -548,13 +548,13 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:FridgeAPI.Controllers.RecipeMatchingController.GetMatchedRecipes">
+        <member name="M:FridgeAPI.Controllers.MatchingController.GetMatchedRecipes">
             <summary>
             Matching.GetMatchedRecipes
             </summary>
             <returns></returns>
         </member>
-        <member name="M:FridgeAPI.Controllers.RecipeMatchingController.SendCheckedProducts(System.Collections.Generic.List{BusinessServices.ProductEntity})">
+        <member name="M:FridgeAPI.Controllers.MatchingController.SendCheckedProducts(System.Collections.Generic.List{BusinessEntities.ProductEntity})">
             <summary>
             Recipe.Add 
             </summary>

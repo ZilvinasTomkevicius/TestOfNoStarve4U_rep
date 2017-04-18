@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BusinessServices;
+using BusinessEntities;
 
 namespace BusinessServices
 {
