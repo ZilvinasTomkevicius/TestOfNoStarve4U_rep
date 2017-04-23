@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessServices
 {
-   public class MatchingServices : IMatchingServices
+    public class MatchingServices : IMatchingServices
     {
         private string connectionString;
 
@@ -20,7 +20,7 @@ namespace BusinessServices
 
         private SqlDataReader reader;
 
-        public List<RecipeEntity> GetMatchedRecipes()
+        public List<RecipeEntity> GetMatchedRecipes(List<ProductEntity> checkedProducts)
         {
             using (SqlConnection con = new SqlConnection(this.connectionString))
             {
@@ -28,8 +28,23 @@ namespace BusinessServices
 
                 List<RecipeEntity> recipeList = new List<RecipeEntity>();
 
+                DataTable dataTable = new DataTable("Temp_Product");
+
+                dataTable.Columns.Add("ID", typeof(Int32));
+                dataTable.Columns.Add("Name", typeof(string));
+
+                foreach (var product in checkedProducts)
+                {
+                    dataTable.Rows.Add(product.ID, product.Name);
+                }
+
                 SqlCommand cmd = new SqlCommand("Recipe_matching", con);
                 cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter parameter = cmd.Parameters.AddWithValue("@tp", dataTable);
+                parameter.SqlDbType = SqlDbType.Structured;
+
+                cmd.ExecuteNonQuery();
 
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -49,37 +64,5 @@ namespace BusinessServices
                 return recipeList;
             }
         }
-
-        public void SendCheckedProducts(List<ProductEntity> checkedProducts)
-        {
-            using (SqlConnection con = new SqlConnection(this.connectionString))
-            {
-                try
-                {
-                    con.Open();
-
-                    SqlTransaction tr = con.BeginTransaction();
-
-                    SqlCommand cmd = new SqlCommand("declare @tp as Temp_Product insert into @tp(ID, Name) values (@ID, @Name)", con, tr);
-                    cmd.CommandType = CommandType.Text;
-
-                    foreach(var product in checkedProducts)
-                    {
-                         cmd.Parameters.AddWithValue("@ID", product.ID);
-                         cmd.Parameters.AddWithValue("@Name", product.Name);
-
-                         cmd.ExecuteNonQuery();
-                         cmd.Parameters.Clear();
-                    }
-                                        
-                    tr.Commit();
-                }
-                catch (Exception e)
-                {
-                    throw new Exception(e.Message);
-                }
-
-            }
-        }
-    }
-}
+     }    
+ }

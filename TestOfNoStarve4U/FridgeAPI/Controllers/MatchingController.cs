@@ -17,17 +17,17 @@ namespace FridgeAPI.Controllers
         private static log4net.ILog Log { get; set; }
 
         ILog log = log4net.LogManager.GetLogger(typeof(MatchingController));
-
+        
         /// <summary>
         /// Matching.GetMatchedRecipes
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public HttpResponseMessage GetMatchedRecipes()
+        [HttpPost]
+        public HttpResponseMessage GetMatchedRecipes(List<ProductEntity> checkedProducts)
         {
             try
             {
-                var recipeList = matchingServices.GetMatchedRecipes();
+                var recipeList = matchingServices.GetMatchedRecipes(checkedProducts);
 
                 return Request.CreateResponse(HttpStatusCode.OK, recipeList);
             }
@@ -37,27 +37,6 @@ namespace FridgeAPI.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
 
-            }
-        }
-
-        /// <summary>
-        /// Recipe.Add 
-        /// </summary>
-        /// <param name="checkedProducts"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public HttpResponseMessage SendCheckedProducts(List<ProductEntity> checkedProducts)
-        {
-            try
-            {
-                matchingServices.SendCheckedProducts(checkedProducts);
-                return Request.CreateResponse(HttpStatusCode.OK, checkedProducts);
-            }
-            catch (Exception e)
-            {
-                log.Error(e);
-
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message);
             }
         }
     }

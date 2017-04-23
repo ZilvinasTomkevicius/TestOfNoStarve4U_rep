@@ -548,17 +548,10 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:FridgeAPI.Controllers.MatchingController.GetMatchedRecipes">
+        <member name="M:FridgeAPI.Controllers.MatchingController.GetMatchedRecipes(System.Collections.Generic.List{BusinessEntities.ProductEntity})">
             <summary>
             Matching.GetMatchedRecipes
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:FridgeAPI.Controllers.MatchingController.SendCheckedProducts(System.Collections.Generic.List{BusinessEntities.ProductEntity})">
-            <summary>
-            Recipe.Add 
-            </summary>
-            <param name="checkedProducts"></param>
             <returns></returns>
         </member>
     </members>
