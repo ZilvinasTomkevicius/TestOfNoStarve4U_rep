@@ -554,5 +554,38 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:FridgeAPI.Controllers.UserController.Add(BusinessEntities.UserEntity)">
+            <summary>
+            User.Add
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FridgeAPI.Controllers.UserController.Update(BusinessEntities.UserEntity)">
+            <summary>
+            User.Update
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FridgeAPI.Controllers.UserController.Delete(System.Int32)">
+            <summary>
+            User.Delete
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:FridgeAPI.Controllers.UserController.Get(System.Int32)">
+            <summary>
+            User.Get
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FridgeAPI.Controllers.UserController.GetList">
+            <summary>
+            User.GetList
+            </summary>
+            <returns></returns>
+        </member>
     </members>
 </doc>

@@ -16,6 +16,6 @@ namespace BusinessEntities
         public string Name { get; set; }
         public string Description { get; set; }
         public int CookingTime { get; set; }
-        public List<ProductEntity> Ingredients { get; set; }
+        public List<RecipeEntity> Ingredients { get; set; }
     }
 }

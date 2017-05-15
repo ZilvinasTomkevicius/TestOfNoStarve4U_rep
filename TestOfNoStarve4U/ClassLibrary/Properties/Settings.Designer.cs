@@ -26,7 +26,8 @@ namespace ClassLibrary.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ZILVINO\\SQLEXPRESS;Database=NoStarve4U;User ID=sa;Password=Test123;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ZILVINO\\SQLEXPRESS;Initial Catalog=NoStarve4U;Persist Security Info=T" +
+            "rue;User ID=sa;Password=kompolaidelis12")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));

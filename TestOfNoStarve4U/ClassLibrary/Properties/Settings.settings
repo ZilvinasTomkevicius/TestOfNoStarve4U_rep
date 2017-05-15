@@ -5,9 +5,10 @@
     <Setting Name="ConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=ZILVINO\SQLEXPRESS;Database=NoStarve4U;User ID=sa;Password=Test123;&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=ZILVINO\SQLEXPRESS;Initial Catalog=NoStarve4U;Persist Security Info=True;User ID=sa;Password=kompolaidelis12&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=ZILVINO\SQLEXPRESS;Database=NoStarve4U;User ID=sa;Password=Test123;</Value>
+      <Value Profile="(Default)">Data Source=ZILVINO\SQLEXPRESS;Initial Catalog=NoStarve4U;Persist Security Info=True;User ID=sa;Password=kompolaidelis12</Value>
     </Setting>
   </Settings>
 </SettingsFile>
